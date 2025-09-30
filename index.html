@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoveGift</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* chặn cuộn */
+   }
+    body {
+      background-color: #1d161a;
+      color: #be16aa; /* Màu phông chữ mới cho tông màu hồng dịu nhẹ và đẹp hơn */
+      position: relative;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+    .navbar {
+      background-color: #60136f;
+      padding: 10px 0;
+    }
+    .navbar-brand {
+      color: #df0b95;
+      font-size: 1.75rem;
+    }
+    .nav-link {
+      color: #f6f6f6 !important;
+      font-size: 1.2rem;
+    }
+    .nav-link.active {
+      background-color: #8a288a;
+      color: #a5172a !important;
+      border-radius: 5px;
+    }
+    .sidebar {
+      background-color: #351d3a;
+      padding: 20px;
+      border-radius: 10px;
+      height: 400px;
+      position: absolute;
+      left: 20px;
+      top: 80px;
+    }
+    .sidebar .nav-link {
+      color: #e2d9e2;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar .nav-link.active {
+      background-color: #dab4da;
+      color: #2b032b;
+    }
+    .sidebar .nav-link i {
+      margin-right: 10px;
+    }
+    .welcome {
+      background-color: #341a3a;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-left: 250px;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #5e2944;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      color: #cfc0cf;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    .btn-custom {
+      background-color: #ece2ec;
+      color: #1a001a;
+      border: none;
+    }
+    .google-btn {
+      background-color: #ffd700;
+      color: #000000;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    /* Heart Animation */
+    .heart {
+      position: absolute;
+      background: #ff69b4;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite, float 5s infinite linear;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+    .heart.large {
+      width: 30px;
+      height: 30px;
+    }
+    .heart.large:before,
+    .heart.large:after {
+      width: 30px;
+      height: 30px;
+    }
+    .heart.large:before {
+      top: -15px;
+      left: 0;
+    }
+    .heart.large:after {
+      left: 15px;
+      top: 0;
+    }
+    .heart.small {
+      width: 15px;
+      height: 15px;
+    }
+    .heart.small:before,
+    .heart.small:after {
+      width: 15px;
+      height: 15px;
+    }
+    .heart.small:before {
+      top: -7.5px;
+      left: 0;
+    }
+    .heart.small:after {
+      left: 7.5px;
+      top: 0;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.2) rotate(-45deg); }
+    }
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(-45deg); }
+      to { transform: translateY(-100vh) rotate(-45deg); }
+    }
+    #effectToggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 0;
+      background-color: #ffccff;
+      color: #1a001a;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="30" height="30"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#d936a5" d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
+        LOVEGIFT</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+      <button class="btn google-btn">Đăng nhập với Google</button>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <h5>Menu</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#"><i class="bi bi-house"></i> Trang chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-cart"></i> Đơn hàng</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-arrow-left-right"></i> Giao dịch</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-ticket"></i> Voucher của tôi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-headset"></i> Hỗ trợ</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="welcome">
+    <h3>CHÀO MỪNG ĐẾN VỚI LOVEGIFT</h3>
+    <div class="mt-3">
+      <button class="btn btn-custom mx-2">Tất cả</button>
+      <button class="btn btn-custom mx-2">Mới nhất</button>
+      <button class="btn btn-custom mx-2">Mật phí</button>
+    </div>
+  </div>
+    <div class="main-container">
+  <div class="container mt-4" style="margin-left: 250px;">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ví Try Âu Thường">
+          <div class="card-body">
+            <h5 class="card-title">Ví Try Âu Thường</h5>
+            <p class="card-text">Website tải tiền, trao và nhận đổi ví, thẻ cào điện thoại...</p>
+            <p class="card-text">Giá: 0đ - 17.000đ</p>
+            <a href="#" class="btn btn-custom">Tạo Website</a>
+            <a href="#" class="btn btn-custom">Xem Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Happy Birthday">
+          <div class="card-body">
+            <h5 class="card-title">Happy Birthday</h5>
+            <p class="card-text">Chúc mừng sinh nhật.</p>
+            <p class="card-text">Giá: 0đ - 30.000đ</p>
+            <a href="#" class="btn btn-custom">Tạo Website</a>
+            <a href="#" class="btn btn-custom">Xem Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Thiệp Nhân Tình Bạn">
+          <div class="card-body">
+            <h5 class="card-title">Thiệp Nhân Tình Bạn</h5>
+            <p class="card-text">Website tải tiền, trao và nhận đổi ví, thẻ cào điện thoại...</p>
+            <p class="card-text">Giá: 0đ - 28.000đ</p>
+            <a href="#" class="btn btn-custom">Tạo Website</a>
+            <a href="#" class="btn btn-custom">Xem Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="effectToggle" class="btn btn-custom">Toggle Effects</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function createHeart(size) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart', size);
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.style.opacity = Math.random() * 0.8 + 0.2;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    function startEffects() {
+      const interval = setInterval(() => {
+        if (document.querySelectorAll('.heart').length < 20) {
+          const size = Math.random() > 0.5 ? 'large' : 'small';
+          createHeart(size);
+        }
+      }, 150);
+      return interval;
+    }
+
+    let effectInterval = null;
+    document.getElementById('effectToggle').addEventListener('click', () => {
+      if (effectInterval) {
+        clearInterval(effectInterval);
+        effectInterval = null;
+        document.querySelectorAll('.heart').forEach(e => e.remove());
+      } else {
+        effectInterval = startEffects();
+      }
+    });
+  </script>
+</body>
+</html>
