@@ -10,8 +10,7 @@
  
 
 </head>
-<body class="home-page">
-   
+   <body class="home-page">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">
@@ -32,7 +31,7 @@
       </div>
                <ul class="list-group flex-column ">
                     <li class="list-group-item mb-2">
-                        <a class="list-group-link active"  href="./index.html"><i class="bi bi-house"></i>Trang chủ</a>
+                        <a class="list-group-link "  href="./index.html"><i class="bi bi-house"></i>Trang chủ</a>
                         
                     </li>
                     <li class="list-group-item mb-2">
@@ -42,7 +41,7 @@
                         <a class="list-group-link"  href="./transactions.html"><i class="bi bi-arrow-left-right"></i>Giao dịch</a>
                     </li>
                     <li class="list-group-item mb-2">
-                        <a class="list-group-link" href="./gifts.html"><i class="bi bi-ticket"></i>Voucher</a>
+                        <a class="list-group-link active" href="./gifts.html"><i class="bi bi-ticket"></i>Voucher</a>
                     </li>
                     <li class="list-group-item">
                         <a class="list-group-link"  href="./contact.html"><i class="bi bi-headset"></i>Hỗ trợ</a>
@@ -52,77 +51,68 @@
     <div class="col-md-1 ">
        </div>
    <div class="col-md-9 main-content text-center text-white  ">
-
-  <h3 class="fw-bold mb-4">Gửi trao yêu thương cùng LoveGift ✨</h3>
-
-  <!-- Thanh lọc loại website -->
-  <div class="d-flex justify-content-center mb-4">
-    <button class="btn me-2 px-4 py-2 fw-semibold text-white" style="background-color:#6a2a6a; border-radius:10px;">tất cả</button>
-    <button class="btn me-2 px-4 py-2 fw-semibold text-white" style="background-color:#6a2a6a; border-radius:10px;">miễn phí</button>
-    <button class="btn px-4 py-2 fw-semibold text-white" style="background-color:#6a2a6a; border-radius:10px;">mất phí</button>
-  </div>
-
-  <!-- Danh sách thẻ website -->
-  <div class="row justify-content-center g-4">
-
-    <!-- Card 1 -->
-    <div class="cart1 col-md-3">
-      <div class="card shadow rounded-3 p-2" style="background-color:#2c2538;">
-        <img src="trungthu.png" class="card-img-top rounded-3" alt="Trung Thu Vui Vẻ">
-        <div class="card-body text-start">
-          <h5 class="card-title text-white fw-bold">Trung Thu Vui Vẻ</h5>
-          <p class="card-text text-light small">Website dành cho dịp trung thu hot nhất!</p>
-          <p class="fw-semibold text-warning">Giá: 0đ - 50.000đ</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-warning btn-sm">Tạo Website</button>
-            <button class="btn btn-outline-success btn-sm">Xem Demo</button>
-          </div>
+   <div class="row p-4 align-items-start">
+      <div class="col-md-10 main-content text-center text-white">
+        <h3 class="fw-bold mb-4" style="color: #ff6b9d; text-shadow: 0 0 10px rgba(255,107,157,0.5);">VOUCHER CỦA BẠN</h3>
+        
+        <!-- Input Nhập Voucher (Glow Focus + Shake Invalid) -->
+        <div class="voucher-section">
+          <input type="text" class="voucher-input" id="voucherCode" placeholder="Nhập mã voucher..." maxlength="20" onblur="validateVoucher()">
+          <button class="save-btn" onclick="saveVoucher()">Lưu</button>
+          <p id="voucherMessage" style="margin-top: 10px; color: #ddd; font-size: 0.9em;"></p>
         </div>
-      </div>
-    </div>
 
-    <!-- Card 2 -->
-    <div class="col-md-3">
-      <div class="card shadow rounded-3 p-2" style="background-color:#2c2538;">
-        <img src="trungthu.png" class="card-img-top rounded-3" alt="Trung Thu Vui Vẻ">
-        <div class="card-body text-start">
-          <h5 class="card-title text-white fw-bold">Trung Thu Vui Vẻ</h5>
-          <p class="card-text text-light small">Website dành cho dịp trung thu hot nhất!</p>
-          <p class="fw-semibold text-warning">Giá: 0đ - 50.000đ</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-warning btn-sm">Tạo Website</button>
-            <button class="btn btn-outline-success btn-sm">Xem Demo</button>
-          </div>
+        <!-- Empty State (Nếu Không Có Voucher) -->
+        <div id="emptyVoucher" class="empty-voucher">
+          <i class="bi bi-ticket-perforated voucher-icon"></i>
+          <h4 class="voucher-title">Bạn không có voucher nào</h4>
+          <p class="voucher-text">Nhập mã hoặc mua mới để nhận ưu đãi yêu thương! 🎁</p>
+          <a href="index.html" class="btn btn-outline-warning mt-3" style="border-radius: 25px;">Mua Voucher</a>
         </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="col-md-3">
-      <div class="card shadow rounded-3 p-2" style="background-color:#2c2538;">
-        <img src="trungthu.png" class="card-img-top rounded-3" alt="Trung Thu Vui Vẻ">
-        <div class="card-body text-start">
-          <h5 class="card-title text-white fw-bold">Trung Thu Vui Vẻ</h5>
-          <p class="card-text text-light small">Website dành cho dịp trung thu hot nhất!</p>
-          <p class="fw-semibold text-warning">Giá: 0đ - 50.000đ</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-warning btn-sm">Tạo Website</button>
-            <button class="btn btn-outline-success btn-sm">Xem Demo</button>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>
+  <script>
+    // Validate Voucher (Demo: Mã hợp lệ "LOVEGIFT2025")
+    function validateVoucher() {
+      const code = document.getElementById('voucherCode').value.trim();
+      const message = document.getElementById('voucherMessage');
+      const empty = document.getElementById('emptyVoucher');
+      if (code === 'LOVEGIFT2025') { // Demo mã
+        message.textContent = 'Mã hợp lệ! Giảm 50% voucher. 💝';
+        message.style.color = '#4ecdc4';
+        empty.style.display = 'none'; // Ẩn empty nếu valid
+      } else if (code) {
+        message.textContent = 'Mã không hợp lệ, thử lại!';
+        message.style.color = '#ff4757';
+        document.getElementById('voucherCode').classList.add('invalid'); // Shake animation
+        setTimeout(() => document.getElementById('voucherCode').classList.remove('invalid'), 500);
+      } else {
+        message.textContent = '';
+      }
+    }
 
-  <!-- Phân trang -->
+    // Save Voucher (Demo: Alert + Confetti)
+    function saveVoucher() {
+      const code = document.getElementById('voucherCode').value.trim();
+      if (code) {
+        alert(`Đã lưu voucher "${code}" thành công! 🎉`);
+        // Confetti save (heart bay)
+        for (let i = 0; i <script ; i++) setTimeout(() => createHeart('small'), i * 100);
+        document.getElementById('emptyVoucher').style.display = 'none'; // Ẩn empty
+      } else {
+        alert('Vui lòng nhập mã voucher!');
+      }
+    }
+    </script>
+
   
-<div class="d-flex justify-content-center mt-5 pagination">
-          <button class="btn pag-btn-active me-2 text-white " style="background-color:#6a2a6a;"><i class="fa fa-chevron-left"></i> Trước</button>
-          <button class="btn pag-btn active me-2 text-white " style="background-color:#6a2a6a;">1</button>
-          <button class="btn pag-btn me-2 text-white " style="background-color:#6a2a6a;">2</button>
-          <button class="btn pag-btn me-2 text-white " style="background-color:#6a2a6a;">3</button>
-          <button class="btn pag-btn text-white " style="background-color:#6a2a6a;"><i class="fa fa-chevron-right"></i> Sau</button>
- </div>
+
+  
+
+
+  
   <button id="effectToggle" class="btn btn-custom" title="Bật hiệu ứng Heart">
     <i class="bi bi-heart"></i>
   </button>
