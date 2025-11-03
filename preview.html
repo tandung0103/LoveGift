@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview Mini Gift</title>
+  <style>
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+      border-radius: 10px;
+    }
+    body { background: #000; text-align:center; }
+  </style>
+</head>
+<body>
+  <h3 style="color:white">Xem Demo Website 🎉</h3>
+  <iframe id="giftFrame"></iframe>
+
+<script>
+  // Lấy đường dẫn mini-site từ URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const site = urlParams.get("site");
+
+  // Nhúng iframe
+  document.getElementById("giftFrame").src = site;
+</script>
+</body>
+</html>

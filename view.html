@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Món Quà Dành Riêng Cho Bạn 💝</title>
+    <style>
+        body {
+            background: #ffdde6;
+            font-family: sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2 id="title"></h2>
+        <p id="msg"></p>
+    </div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    let name = params.get("name") || "Bạn";
+    let msg = params.get("msg") || "Có người đang nghĩ về bạn ❤️";
+
+    document.getElementById("title").innerText = "🎉 Gửi tặng: " + decodeURIComponent(name);
+    document.getElementById("msg").innerText = decodeURIComponent(msg);
+</script>
+</body>
+</html>

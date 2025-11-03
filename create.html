@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo Website Món Quà 💝</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            background: #220033;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-family: sans-serif;
+        }
+        input, textarea {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            background: #ff66cc;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #qrBox {
+            margin-top: 20px;
+            padding: 20px;
+            background: #331155;
+            border-radius: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tạo Website Trung Thu 🎑</h2>
+
+    <input type="text" id="receiver" placeholder="Tên người nhận ❤️">
+    <textarea id="message" placeholder="Lời nhắn yêu thương 💌"></textarea>
+
+    <button onclick="createSite()">Tạo ngay</button>
+
+    <div id="qrBox">
+        <h3>🎁 Quét mã để xem món quà! 🎁</h3>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        function createSite() {
+            let name = encodeURIComponent(document.getElementById("receiver").value);
+            let msg = encodeURIComponent(document.getElementById("message").value);
+
+            if (!name) {
+                alert("Nhập tên người nhận trước nhé ❤️");
+                return;
+            }
+
+            // Tạo URL
+            let url = `view.html?name=${name}&msg=${msg}`;
+
+            // Hiện QR
+            document.getElementById("qrBox").style.display = "block";
+            document.getElementById("qrcode").innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), url);
+        }
+    </script>
+</body>
+</html>
