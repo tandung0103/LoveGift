@@ -49,7 +49,7 @@ body {
 .home-page .main-content {
   background-color: #482048;
   border-radius: 12px;
-  padding: 3rem;
+  padding: 2rem;
   min-height: auto;
   margin-left: 0; /* Override margin ở index */
 }
@@ -104,10 +104,57 @@ body {
 .row {
   align-items: flex-start !important; /* các cột sẽ không bị kéo cao bằng nhau */
 }
+ 
+.card img {
+  height: 120px; /* 🔹 cố định chiều cao ảnh */ 
+}
+/* Fix overflow text trong card-body (tránh cắt) */
+.card-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 140px !important; /* 🔹 Tăng min-height để text/nút fit (từ 120px lên 140px) */
+  overflow: hidden !important; /* 🔹 Ẩn text tràn, hoặc dùng 'visible' nếu muốn scroll */
+  padding: 10px !important; /* Thêm padding nội bộ để text không sát viền */
+  word-wrap: break-word; /* 🔹 Wrap text dài (như "basic box 3D dành cho giáng sinh!") */
+}
 
+/* Tăng height img nhẹ nếu text vẫn ép */
+.card-img-top {
+  width: 100% !important;
+  height: 130px !important; /* 🔹 Giảm từ 140px để nhường chỗ text (test 120-150px) */
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 10px 10px 0 0 !important;
+  margin-bottom: 8px !important; /* Giảm margin dưới img */
+}
 
+/* Card tổng: Tăng height min cho toàn card */
+.card {
+  height: auto !important; /* 🔹 Đổi từ 100% sang auto để fit nội dung, vẫn stretch row */
+  min-height: 320px !important; /* 🔹 Min 320px (img 130 + body 140 + padding 50) – điều chỉnh theo ảnh */
+  display: flex !important;
+  flex-direction: column !important;
+}
 
+/* Container: Giảm gap nếu card sát nhau */
+#cardsContainer {
+  gap: 15px !important; /* 🔹 Giảm gap để width rộng hơn */
+}
 
+/* Text cụ thể: Giảm font nếu cần */
+.card-title {
+  font-size: 1.1rem !important; /* 🔹 Nhỏ hơn để text ngắn */
+  line-height: 1.2 !important;
+}
+
+.card-text {
+  font-size: 0.9rem !important; /* 🔹 Text mô tả nhỏ hơn */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; /* 🔹 Cắt text dài thành "..." nếu tràn 1 dòng */
+  white-space: nowrap !important; /* 🔹 Không wrap, chỉ cắt */
+}
 
 /* ========== HIỆU ỨNG HEART ========== */
     .heart {

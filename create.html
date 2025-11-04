@@ -2,44 +2,72 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tạo Website Món Quà 💝</title>
+    <title>Tạo QRCode Món Quà 💝</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
         body {
             background: #220033;
             color: white;
-            text-align: center;
-            padding: 40px;
             font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px;
         }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
         input, textarea {
-            width: 90%;
+            width: 60%;
+            max-width: 500px;
             margin: 10px 0;
-            padding: 10px;
+            padding: 12px 16px;
             border-radius: 8px;
             border: none;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
         }
+
         button {
             background: #ff66cc;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             border: none;
             color: white;
             cursor: pointer;
             margin-top: 20px;
+            font-size: 16px;
+            transition: 0.3s;
         }
+
+        button:hover {
+            background: #ff4db8;
+        }
+
         #qrBox {
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 30px;
+            padding: 25px;
             background: #331155;
             border-radius: 12px;
             display: none;
+            text-align: center;
+            width: fit-content;
+        }
+
+        #qrcode {
+            margin: 20px auto 0;
         }
     </style>
 </head>
 <body>
-    <h2>Tạo Website Trung Thu 🎑</h2>
+    <h2>Tạo QRCODE 🎑</h2>
 
     <input type="text" id="receiver" placeholder="Tên người nhận ❤️">
     <textarea id="message" placeholder="Lời nhắn yêu thương 💌"></textarea>
@@ -61,10 +89,8 @@
                 return;
             }
 
-            // Tạo URL
             let url = `view.html?name=${name}&msg=${msg}`;
 
-            // Hiện QR
             document.getElementById("qrBox").style.display = "block";
             document.getElementById("qrcode").innerHTML = "";
             new QRCode(document.getElementById("qrcode"), url);
